@@ -55,10 +55,18 @@ class ViewController: UIViewController {
             }
         case "/":
             if operandStack.count >= 2 {
-                displayValue = operandStack.removeLast() / operandStack.removeLast()
+                let lastNum = operandStack.removeLast()
+                displayValue = operandStack.removeLast() / lastNum
             }
-//        case "-":
-//        case "+":
+        case "-":
+            if operandStack.count >= 2 {
+                let secondNum = operandStack.removeLast()
+                displayValue = operandStack.removeLast() - secondNum
+            }
+        case "+":
+            if operandStack.count >= 2 {
+                displayValue = operandStack.removeLast() + operandStack.removeLast()
+            }
         default: break
         }
     
