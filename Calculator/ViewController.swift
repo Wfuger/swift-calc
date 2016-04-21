@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         userIsTypingANumber = false
         operandStack.append(displayValue)
         display.text = "0"
-        print("operand stack = \(operandStack)")
     }
 
     var displayValue: Double {
@@ -53,28 +52,13 @@ class ViewController: UIViewController {
         }
         switch operation {
         case "x":
-//            if operandStack.count >= 2 {
-//                displayValue = operandStack.removeLast() * operandStack.removeLast()
-            
                 performOperation(multiply)
-//            }
         case "/":
                 performOperation(divide)
-//            if operandStack.count >= 2 {
-//                let lastNum = operandStack.removeLast()
-//                displayValue = operandStack.removeLast() / lastNum
-//            }
         case "-":
                 performOperation(subtract)
-//            if operandStack.count >= 2 {
-//                let secondNum = operandStack.removeLast()
-//                displayValue = operandStack.removeLast() - secondNum
-//            }
         case "+":
                 performOperation(add)
-//            if operandStack.count >= 2 {
-//                displayValue = operandStack.removeLast() + operandStack.removeLast()
-//            }
         default: break
         }
     
@@ -102,7 +86,6 @@ class ViewController: UIViewController {
     @IBAction func clear() {
         operandStack.removeAll()
         display.text = "0"
-        print("operand stack = \(operandStack)")
     }
 
 }
