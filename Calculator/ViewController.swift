@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
     
-    var userIsTypingANumber: Bool = false
+    var userIsTypingANumber = false
     
     @IBAction func updateDigit(sender: UIButton) {
         let digit = sender.currentTitle!
@@ -23,17 +23,51 @@ class ViewController: UIViewController {
             userIsTypingANumber = true
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    var operandStack = Array<Double>()
+    
+    @IBAction func enter() {
+        userIsTypingANumber = false
+        operandStack.append(displayValue)
+        display.text = "0"
+        print("operand stack = \(operandStack)")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    var displayValue: Double {
+        get {
+            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+        }
+        set {
+            display.text = "\(newValue)"
+            userIsTypingANumber = false
+        }
     }
 
+    @IBAction func operate(sender: UIButton) {
+        let operation = sender.currentTitle!
+        if userIsTypingANumber {
+            enter()
+        }
+        switch operation {
+        case "X":
+            if operandStack.count >= 2 {
+                displayValue = operandStack.removeLast() * operandStack.removeLast()
+            }
+        case "/":
+            if operandStack.count >= 2 {
+                displayValue = operandStack.removeLast() / operandStack.removeLast()
+            }
+//        case "-":
+//        case "+":
+        default: break
+        }
+    
+    }
+    @IBAction func clear() {
+        operandStack.removeAll()
+        displayValue = 0
+        print("operand stack = \(operandStack)")
+    }
 
 }
 
