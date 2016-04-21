@@ -66,25 +66,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="vio-A4-ZFm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="X"/>
+                                <state key="normal" title="x"/>
                                 <connections>
                                     <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RMM-qI-k19"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIt-IE-vjL">
-                                <rect key="frame" x="412" y="291" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="64" id="6hR-jk-cwp"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="NkL-9M-OMN"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="64" id="OtP-bm-fOy"/>
-                                    <constraint firstAttribute="width" constant="64" id="QI9-oq-Mz2"/>
-                                    <constraint firstAttribute="height" constant="64" id="orX-Aj-jKn"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="pQs-ik-92h"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="+"/>
-                                <connections>
-                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kYM-zl-E9b"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKT-CC-ADt">
@@ -238,6 +222,22 @@
                                 <state key="normal" title="C"/>
                                 <connections>
                                     <action selector="clear" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zy2-56-ezz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIt-IE-vjL">
+                                <rect key="frame" x="412" y="291" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="64" id="6hR-jk-cwp"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="NkL-9M-OMN"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="64" id="OtP-bm-fOy"/>
+                                    <constraint firstAttribute="width" constant="64" id="QI9-oq-Mz2"/>
+                                    <constraint firstAttribute="height" constant="64" id="orX-Aj-jKn"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="pQs-ik-92h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kYM-zl-E9b"/>
                                 </connections>
                             </button>
                         </subviews>

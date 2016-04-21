@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     }
     
     var operandStack = Array<Double>()
+    var operationToDo = Array<String>()
     
     @IBAction func enter() {
         userIsTypingANumber = false
@@ -45,35 +46,62 @@ class ViewController: UIViewController {
 
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
+        operationToDo.append(operation)
+        print(operationToDo)
         if userIsTypingANumber {
             enter()
         }
         switch operation {
-        case "X":
-            if operandStack.count >= 2 {
-                displayValue = operandStack.removeLast() * operandStack.removeLast()
-            }
+        case "x":
+//            if operandStack.count >= 2 {
+//                displayValue = operandStack.removeLast() * operandStack.removeLast()
+            
+                performOperation(multiply)
+//            }
         case "/":
-            if operandStack.count >= 2 {
-                let lastNum = operandStack.removeLast()
-                displayValue = operandStack.removeLast() / lastNum
-            }
+                performOperation(divide)
+//            if operandStack.count >= 2 {
+//                let lastNum = operandStack.removeLast()
+//                displayValue = operandStack.removeLast() / lastNum
+//            }
         case "-":
-            if operandStack.count >= 2 {
-                let secondNum = operandStack.removeLast()
-                displayValue = operandStack.removeLast() - secondNum
-            }
+                performOperation(subtract)
+//            if operandStack.count >= 2 {
+//                let secondNum = operandStack.removeLast()
+//                displayValue = operandStack.removeLast() - secondNum
+//            }
         case "+":
-            if operandStack.count >= 2 {
-                displayValue = operandStack.removeLast() + operandStack.removeLast()
-            }
+                performOperation(add)
+//            if operandStack.count >= 2 {
+//                displayValue = operandStack.removeLast() + operandStack.removeLast()
+//            }
         default: break
         }
     
     }
+    
+    func performOperation(operation: (Double, Double) -> Double) {
+        if operandStack.count >= 2 {
+            let lastNum = operandStack.removeLast()
+            displayValue = operation(operandStack.removeLast(), lastNum)
+            
+        }
+    }
+    func multiply(op1: Double, op2: Double) -> Double {
+        return op1 * op2
+    }
+    func divide(op1: Double, op2: Double) -> Double {
+        return op1 / op2
+    }
+    func subtract(op1: Double, op2: Double) -> Double {
+        return op1 - op2
+    }
+    func add(op1: Double, op2: Double) -> Double {
+        return op1 + op2
+    }
     @IBAction func clear() {
         operandStack.removeAll()
-        displayValue = 0
+        display.text = "0"
         print("operand stack = \(operandStack)")
     }
 
