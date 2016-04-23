@@ -52,37 +52,23 @@ class ViewController: UIViewController {
         }
         switch operation {
         case "x":
-                performOperation(multiply)
+            performOperation({ (op1: Double, op2: Double) -> Double in return op1 * op2 })
         case "/":
-                performOperation(divide)
+                performOperation({ (op1: Double, op2: Double) -> Double in return op1 / op2 })
         case "-":
-                performOperation(subtract)
+                performOperation({ (op1: Double, op2: Double) -> Double in return op1 - op2 })
         case "+":
-                performOperation(add)
+                performOperation({ (op1: Double, op2: Double) -> Double in return op1 + op2 })
         default: break
         }
-    
     }
-    
     func performOperation(operation: (Double, Double) -> Double) {
         if operandStack.count >= 2 {
             let lastNum = operandStack.removeLast()
             displayValue = operation(operandStack.removeLast(), lastNum)
-            
         }
     }
-    func multiply(op1: Double, op2: Double) -> Double {
-        return op1 * op2
-    }
-    func divide(op1: Double, op2: Double) -> Double {
-        return op1 / op2
-    }
-    func subtract(op1: Double, op2: Double) -> Double {
-        return op1 - op2
-    }
-    func add(op1: Double, op2: Double) -> Double {
-        return op1 + op2
-    }
+
     @IBAction func clear() {
         operandStack.removeAll()
         display.text = "0"
