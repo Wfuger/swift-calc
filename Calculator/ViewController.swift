@@ -46,19 +46,27 @@ class ViewController: UIViewController {
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
         operationToDo.append(operation)
-        print(operationToDo)
+//        print(operationToDo)
         if userIsTypingANumber {
             enter()
         }
         switch operation {
         case "x":
             performOperation({ $0 * $1 })
-        case "/":
-                performOperation({ $0 / $1 })
+        case "÷":
+            performOperation({ $0 / $1 })
         case "-":
-                performOperation({ $0 - $1 })
+            performOperation({ $0 - $1 })
         case "+":
-                performOperation({ $0 + $1 })
+            performOperation({ $0 + $1 })
+        case "sin":
+            performSingleOperation({ sin($0) })
+        case "cos":
+            performSingleOperation({ cos($0) })
+        case "tan":
+            performSingleOperation({ tan($0) })
+//        case "pi":
+//            performOperation({ $0 })
         default: break
         }
     }
@@ -69,6 +77,11 @@ class ViewController: UIViewController {
         }
     }
 
+    func performSingleOperation(operation: Double -> Double) {
+        if operandStack.count >= 1 {
+            displayValue = operation(operandStack.removeLast())
+        }
+    }
     @IBAction func clear() {
         operandStack.removeAll()
         display.text = "0"
